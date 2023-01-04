@@ -1,0 +1,22 @@
+#!/bin/sh
+set -e
+
+builddir=$1
+
+version=$TIER_VERSION
+if [ -z "$version" ]; then
+	version="0.6.2"
+fi
+
+set -u
+
+echo "-----> Installing Tier $version"
+
+# TODO: save in cache director ($2) and reuse if already downloaded
+url="https://github.com/tierrun/tier/releases/download/v${version}/tier_${version}_linux_amd64.tar.gz"
+mkdir -p $builddir/bin/tier
+curl -sL "$url" | tar -xz -C $builddir/bin/tier
+mkdir -p $builddir/.profile.d
+cp tier.sh $builddir/.profile.d/tier.sh
+
+echo "-----> Done installing Tier $version"
