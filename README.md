@@ -6,7 +6,7 @@ dynos.
 
 # Install
 
-	$ heroku buildpack:add https://github.com/tierrun/tier-run-buildpack
+	$ heroku buildpacks:add https://github.com/tierrun/tier-run-buildpack
 
 # Environment
 
